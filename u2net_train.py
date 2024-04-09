@@ -63,7 +63,7 @@ if __name__ == '__main__':
     train_num = 0
     val_num = 0
 
-    tra_img_name_list = glob.glob(data_dir + tra_image_dir + '*' + image_ext)
+    tra_img_name_list = glob.glob(data_dir + tra_image_dir + '**' + image_ext)
 
     tra_lbl_name_list = []
     for img_path in tra_img_name_list:

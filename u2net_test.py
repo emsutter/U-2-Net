@@ -54,12 +54,10 @@ def save_output(image_name,pred,d_dir):
 def main():
 
     # --------- 1. get image path and name ---------
-    model_name='u2net'#u2netp
+    model_name='wine_net'
 
-
-
-    image_dir = os.path.join(os.getcwd(), 'test_data', 'test_images')
-    prediction_dir = os.path.join(os.getcwd(), 'test_data', model_name + '_results' + os.sep)
+    image_dir = os.path.join(os.getcwd(), 'test_data', 'wine_net', 'input')
+    prediction_dir = os.path.join(os.getcwd(), 'test_data', model_name + 'Expected Results' + os.sep)
     model_dir = os.path.join(os.getcwd(), 'saved_models', model_name, model_name + '.pth')
 
     img_name_list = glob.glob(image_dir + os.sep + '*')
@@ -78,12 +76,9 @@ def main():
                                         num_workers=1)
 
     # --------- 3. model define ---------
-    if(model_name=='u2net'):
-        print("...load U2NET---173.6 MB")
-        net = U2NET(3,1)
-    elif(model_name=='u2netp'):
-        print("...load U2NEP---4.7 MB")
-        net = U2NETP(3,1)
+
+    print("...load WINENET---173.6 MB")
+    net = U2NET(3,1)
 
     if torch.cuda.is_available():
         net.load_state_dict(torch.load(model_dir))
